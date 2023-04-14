@@ -1,1 +1,35 @@
-<p>login works!</p>
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <h2 class="active" (click)="MostrarFormCrear(false)"> Iniciar Sesion </h2>
+      <h2 class="inactive underlineHover" (click)="MostrarFormCrear(true)"> Crear Cuenta </h2>
+  
+      
+  
+      <!-- Login Form -->
+      <div *ngIf="!mostraCrear">
+        
+          <form id="iniciarSesionForm">
+            <input type="text" id="login" class="fadeIn second" [(ngModel)]="user" name="login" placeholder="Usuario">
+            <input type="text" id="password" type="password" class="fadeIn third" [(ngModel)]="pass" name="login" placeholder="Contraseña">
+            <input type="submit" class="fadeIn fourth" value="Iniciar Sesion" (click)="InicioSesion()">
+          </form>
+      </div>
+
+      <div *ngIf="mostraCrear">
+
+          <form id="CrearUsuario">
+            <input type="text" id="login" class="fadeIn second" [(ngModel)]="nuevoUser" name="login" placeholder="Usuario">
+            <input type="text" id="password" type="password" class="fadeIn third" [(ngModel)]="nuevaPass" name="login" placeholder="Contraseña">
+            <input type="text" id="password" type="password" class="fadeIn third" [(ngModel)]="repitePass" name="login" placeholder="Repetir Contraseña">
+            <input type="submit" class="fadeIn fourth" value="Crear Usuario" (click)="CrearUsuario()">
+          </form>
+      </div>
+  
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" href="#">Olvido su Contraseña?</a>
+      </div>
+  
+    </div>
+  </div>

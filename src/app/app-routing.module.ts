@@ -5,7 +5,7 @@ import { ErrorComponent } from './error/error.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-   {path: '', component: BienvenidoComponent},
+   {path: '', component: LoginComponent},
    {path: 'bienvenido', component: BienvenidoComponent},
    {path: 'error', component: ErrorComponent},
    {path: 'login', component: LoginComponent},
