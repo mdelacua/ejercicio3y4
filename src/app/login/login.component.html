@@ -1,22 +1,24 @@
+
 <div class="wrapper fadeInDown">
     <div id="formContent">
       <!-- Tabs Titles -->
-      <h2 class="active" (click)="MostrarFormCrear(false)"> Iniciar Sesion </h2>
-      <h2 class="inactive underlineHover" (click)="MostrarFormCrear(true)"> Crear Cuenta </h2>
+      <h2  [ngClass]="btnFormulario.inciarSesion ? 'active' :  'inactive underlineHover'" (click)="MostrarFormCrear('inciarSesion')"> Iniciar Sesion </h2>
+      <h2  [ngClass]="btnFormulario.registrarse ? 'active' :  'inactive underlineHover'"  (click)="MostrarFormCrear('registrarse')"> Crear Cuenta </h2>
   
       
   
       <!-- Login Form -->
-      <div *ngIf="!mostraCrear">
+      <div *ngIf="btnFormulario.inciarSesion">
         
           <form id="iniciarSesionForm">
             <input type="text" id="login" class="fadeIn second" [(ngModel)]="user" name="login" placeholder="Usuario">
             <input type="text" id="password" type="password" class="fadeIn third" [(ngModel)]="pass" name="login" placeholder="Contraseña">
-            <input type="submit" class="fadeIn fourth" value="Iniciar Sesion" (click)="InicioSesion()">
+            <input type="submit" class="fadeIn fourth" value="Iniciar Sesion" (click)="InicioSesion()" >
+            <input type="submit" style="display: none;" class="fadeIn fourth" value="Iniciar Sesion" (click)="InicioSesion()" [swal]="['Oops!', 'This is not implemented yet :/', 'warning']">
           </form>
       </div>
 
-      <div *ngIf="mostraCrear">
+      <div *ngIf="btnFormulario.registrarse">
 
           <form id="CrearUsuario">
             <input type="text" id="login" class="fadeIn second" [(ngModel)]="nuevoUser" name="login" placeholder="Usuario">
@@ -32,4 +34,6 @@
       </div>
   
     </div>
+    
   </div>
+  
