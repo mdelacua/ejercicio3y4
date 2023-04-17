@@ -34,7 +34,7 @@ export class LoginComponent {
        datoUsuario.forEach((element: { user: any; pass: any; }) => {
         
         if(element.user == this.user && element.pass == this.pass){
-          this.NotificaionInicioSesion()
+          this.NotificaionInicioSesion('Usuario "'+this.user+'" valido!')
           this.router.navigate(['/inicio']);
           loginValido = true
         }
@@ -60,9 +60,9 @@ export class LoginComponent {
       text: 'Usuario invalido!'
     })
   }
-  NotificaionInicioSesion(){
+  NotificaionInicioSesion(mensaje:string){
     Swal.fire(
-      'Usuario "'+this.user+'" valido!',
+      mensaje,
       'Presione Ok para continuar!',
       'success'
     )
@@ -78,16 +78,13 @@ export class LoginComponent {
 
       arrayUsuarios.push({user:this.nuevoUser, pass:this.nuevaPass})
       localStorage.setItem("usuario", JSON.stringify( arrayUsuarios) );
-      this.mostraCrear = false
-      /*
-      var auxJson = {user:this.nuevoUser, pass:this.nuevaPass}
-      localStorage.setItem("usuario", JSON.stringify( auxJson) );
-      this.mostraCrear = false*/
+      this.mostraCrear = false      
+      this.NotificaionInicioSesion('Usuario "'+this.user+'" creado exitosamente!')
+      this.MostrarFormCrear('inciarSesion')
     }
     else{
       this.ErrorUsuario()
     }
-    //this.router.navigate(['/bienvenido']);
     
    
   }
